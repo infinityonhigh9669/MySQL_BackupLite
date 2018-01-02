@@ -20,7 +20,12 @@ LOCAL_PATH=
 REMOTE_PATH=
 
 # start the sqldump and compression
-/bin/mkdir $MYSQLDUMP_DIR/$VARDATE
+
+# check of the backup directory exists
+# if not, create it
+if  [ ! -d $MYSQLDUMP_DIR ]; then
+  /bin/mkdir -p $MYSQLDUMP_DIR/$VARDATE
+fi
 $MYSQLDUMP > $MYSQLDUMP_DIR/$VARDATE/$HOSTNAME-mysql-all.sql
 $COMPRESSION_COMMAND $MYSQLDUMP_DIR/$VARDATE/$HOSTNAME-mysql-all.sql
 
