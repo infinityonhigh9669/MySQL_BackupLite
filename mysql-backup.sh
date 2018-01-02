@@ -23,7 +23,7 @@ REMOTE_PATH=
 
 # check of the backup directory exists
 # if not, create it
-if  [ ! -d $MYSQLDUMP_DIR ]; then
+if  [ ! -d $MYSQLDUMP_DIR/$VARDATE ]; then
   /bin/mkdir -p $MYSQLDUMP_DIR/$VARDATE
 fi
 $MYSQLDUMP > $MYSQLDUMP_DIR/$VARDATE/$HOSTNAME-mysql-all.sql
